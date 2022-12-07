@@ -38,7 +38,7 @@ public class baseBallApi {
 
     /**
      * @param gameId
-     * gameGuess 게임 진행
+     * gameGuess 게임 진행 테스트
      */
     @PostMapping(value = "/game/{gameId}/guess")
     public void gameGuess(@PathVariable String gameId){
