@@ -14,7 +14,7 @@ game id가 발급되고, `중복되지 않는 1-9 사이의 세 숫자` 가 정�
 게임 시작 (POST, /game/start)
 response
 {
-"success": true,
+"success": true
 "data": {
 "gameId": 123
 }
