@@ -18,19 +18,30 @@ public class baseBallApi {
     @PostMapping(value = "/game/start")
     public void gameStart(){
         Random random = new Random();
+
         int gameId;
         String ranNum="";
         String resultNum="";
 
         for(int i = 0; i < 3; i++){
-            gameId = random.nextInt(9);
-            ranNum = Integer.toString(gameId);
-            resultNum += ranNum;
+
+            ranNum = Integer.toString(random.nextInt(9));
+            if(!resultNum.contains(ranNum)){
+                resultNum += ranNum;
+            }else {
+                i -= 1;
+            }
+
         }
         log.info("게임 아이디는 " + resultNum +" 입니다.");
     }
+
+    /**
+     * @param gameId
+     * gameGuess 게임 진행
+     */
     @PostMapping(value = "/game/{gameId}/guess")
-    public void gameStart(@PathVariable String gameId){
+    public void gameGuess(@PathVariable String gameId){
         log.info(gameId);
     }
 }
