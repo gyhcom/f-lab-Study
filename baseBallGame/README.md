@@ -64,7 +64,7 @@ response
 {    
 "success": true,
 "data": {
-histories: '['
+histories: [
 {
 "answer": "123",
 "result": {
@@ -81,6 +81,6 @@ histories: '['
 "out": 1
 }
 }
-']'
+]
 }
 }
