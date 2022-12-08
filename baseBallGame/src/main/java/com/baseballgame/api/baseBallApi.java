@@ -13,35 +13,48 @@ import java.util.Random;
 public class baseBallApi {
 
     /**
-     * gameStart gameId 생성(유니크한 3자리)
+     * gameStart basball 답변 생성(유니크한 3자리)
      */
     @PostMapping(value = "/game/start")
     public void gameStart(){
+        String gameId = "sss";
+
+    }
+
+    /**
+     * @param answer
+     */
+    @PostMapping(value = "/game/{gameId}/guess")
+    public void gameGuess(@RequestParam int answer){
+        System.out.println("사용자 답변 " + answer);
         Random random = new Random();
 
-        int gameId;
-        String ranNum="";
-        String resultNum="";
+        int strike = 0;
+        int ball = 0;
+        int out = 0;
+        String ranNum,resultNum ="";
+        String sAnswer = Integer.toString(answer);
+
 
         for(int i = 0; i < 3; i++){
-
             ranNum = Integer.toString(random.nextInt(9));
             if(!resultNum.contains(ranNum)){
                 resultNum += ranNum;
             }else {
                 i -= 1;
             }
-
         }
-        log.info("게임 아이디는 " + resultNum +" 입니다.");
-    }
 
-    /**
-     * @param gameId
-     * gameGuess 게임 진행
-     */
-    @PostMapping(value = "/game/{gameId}/guess")
-    public void gameGuess(@PathVariable String gameId){
-        log.info(gameId);
+        for(int i = 0; i < resultNum.length(); i++) {
+            if(resultNum.charAt(i) == sAnswer.charAt(i)){
+                strike +=1;
+            }else{
+
+                }
+            }
+        }
+
+
+        log.info("베이스볼 게임 답변 " + resultNum +" 입니다.");
     }
 }
