@@ -33,7 +33,7 @@ public class baseBallApi {
             }
 
         }
-        log.info("게임 아이디는 " + resultNum +" 입니다.");
+        log.info("게임 아이디 " + resultNum +" 입니다.");
     }
 
     /**
