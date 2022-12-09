@@ -55,6 +55,6 @@ public class baseBallApi {
         }
 
 
+
         log.info("베이스볼 게임 답변 " + resultNum +" 입니다.");
-    }
 }
