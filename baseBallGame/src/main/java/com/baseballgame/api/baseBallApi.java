@@ -26,7 +26,7 @@ public class baseBallApi {
      */
     @PostMapping(value = "/game/{gameId}/guess")
     public void gameGuess(@RequestParam int answer) {
-        System.out.println("사용자 답변 " + answer);
+
         Random random = new Random();
 
         int strike = 0;
@@ -49,12 +49,17 @@ public class baseBallApi {
             if (resultNum.charAt(i) == sAnswer.charAt(i)) {
                 strike += 1;
             } else {
-
+                if(sAnswer.indexOf(resultNum.charAt(i))!=-1){
+                    ball+=1;
+                }else{
+                    out+=1;
+                }
             }
         }
 
-
         log.info("베이스볼 게임 답변 " + resultNum + " 입니다.");
+        log.info("사용자 답변 " + answer);
+        log.info("strike " + strike +" ball " + ball + " out " +out);
     }
 }
 
