@@ -50,7 +50,6 @@ public class baseBallApi {
                 strike +=1;
             }else{
 
-                }
             }
         }
 
