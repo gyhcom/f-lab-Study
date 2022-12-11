@@ -1,5 +1,8 @@
 package com.baseballgame.GameIdNumber;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Compare {
     public String howMany(int answer, String resultNum) {
         int strike = 0;

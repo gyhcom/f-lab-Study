@@ -16,10 +16,12 @@ public class baseBallApi {
      */
     @PostMapping(value = "/game/start")
     public String gameId(){
-        log.info("BaseBall Game을 시작합니다.");
         RandomNum rN = new RandomNum();
-        gameId="AA"+rN.create();
         gameAnswer=rN.create();
+        gameId="AA"+gameAnswer;
+
+        log.info("BaseBall Game을 시작합니다.");
+        log.info("GameId는 :"+gameId+" 입니다");
 
         JsonObject obj = new JsonObject();
         JsonObject data = new JsonObject();
@@ -39,8 +41,8 @@ public class baseBallApi {
     @ResponseBody
     public String gameGuess(@RequestParam int answer) {
         Compare cp = new Compare();
-        gameAnswer =cp.howMany(answer, gameAnswer);
-    return gameAnswer;
+        String gameResult = cp.howMany(answer, gameAnswer).toString();
+    return gameResult;
     }
 }
 
