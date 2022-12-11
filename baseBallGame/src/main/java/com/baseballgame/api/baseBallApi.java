@@ -1,31 +1,41 @@
 package com.baseballgame.api;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 @Slf4j
 @RestController
 public class baseBallApi {
-
+    public static String gameId;
     /**
-     * gameStart basball 답변 생성(유니크한 3자리)
+     * gameStart basball 생성(유니크한 3자리)
      */
     @PostMapping(value = "/game/start")
     public String gameId(){
+        Random random = new Random();
+        String ranNum, resultNum = "";
+
+        for (int i = 0; i < 2; i++) {
+            ranNum = Integer.toString(random.nextInt(9));
+            if (!resultNum.contains(ranNum)) {
+                resultNum += ranNum;
+            } else {
+                i -= 1;
+            }
+        }
+        gameId = "AA" + resultNum;
+
         JsonObject obj = new JsonObject();
         obj.addProperty("success", true);
 
         JsonObject data = new JsonObject();
-        data.addProperty("gameId", 001);
+        data.addProperty("gameId",gameId);
 
         obj.add("data", data);
+
     return obj.toString();
     }
 
