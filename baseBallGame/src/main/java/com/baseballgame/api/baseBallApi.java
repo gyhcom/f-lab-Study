@@ -1,11 +1,13 @@
 package com.baseballgame.api;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 @Slf4j
@@ -16,15 +18,22 @@ public class baseBallApi {
      * gameStart basball 답변 생성(유니크한 3자리)
      */
     @PostMapping(value = "/game/start")
-    public void gameStart(){
-        String gameId = "sss";
+    public String gameId(){
+        JsonObject obj = new JsonObject();
+        obj.addProperty("success", true);
 
+        JsonObject data = new JsonObject();
+        data.addProperty("gameId", 001);
+
+        obj.add("data", data);
+    return obj.toString();
     }
 
     /**
      * @param answer
      */
     @PostMapping(value = "/game/{gameId}/guess")
+    @ResponseBody
     public void gameGuess(@RequestParam int answer) {
 
         Random random = new Random();
