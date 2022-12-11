@@ -3,12 +3,16 @@ package com.baseballgame.GameIdNumber;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import static com.baseballgame.api.baseBallApi.gameId;
 
 public class Compare {
     public String howMany(int answer, String resultNum) {
         JsonObject obj = new JsonObject();
         JsonObject data = new JsonObject();
+
 
         int strike = 0;
         int ball = 0;
@@ -37,6 +41,7 @@ public class Compare {
         data.addProperty("out", out);
 
         obj.add("data",data);
+        String result ="";
         return obj.toString();
 
     }
