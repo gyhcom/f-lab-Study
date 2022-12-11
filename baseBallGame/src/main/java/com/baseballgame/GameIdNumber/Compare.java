@@ -1,13 +1,19 @@
 package com.baseballgame.GameIdNumber;
 
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Compare {
     public String howMany(int answer, String resultNum) {
+        JsonObject obj = new JsonObject();
+        JsonObject data = new JsonObject();
+
         int strike = 0;
         int ball = 0;
         int out = 0;
+        int remainingCount =0;
 
         String sAnswer = Integer.toString(answer);
 
@@ -22,7 +28,16 @@ public class Compare {
                 }
             }
         }
-        return "Strike " + strike + " Ball: " + ball + " Out: " + out;
+        obj.addProperty("success", true);
+
+        data.addProperty("correct", true);
+        data.addProperty("remainingCount", remainingCount);
+        data.addProperty("strike", strike);
+        data.addProperty("ball", ball);
+        data.addProperty("out", out);
+
+        obj.add("data",data);
+        return obj.toString();
 
     }
 }

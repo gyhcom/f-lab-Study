@@ -21,7 +21,7 @@ public class baseBallApi {
         gameId="AA"+gameAnswer;
 
         log.info("BaseBall Game을 시작합니다.");
-        log.info("GameId는 :"+gameId+" 입니다");
+        log.info("GameId는: "+gameId+" 입니다");
 
         JsonObject obj = new JsonObject();
         JsonObject data = new JsonObject();
@@ -39,10 +39,10 @@ public class baseBallApi {
      */
     @PostMapping(value = "/game/{gameId}/guess")
     @ResponseBody
-    public String gameGuess(@RequestParam int answer) {
+    public <obj> String gameGuess(@RequestParam int answer) {
+        JsonObject obj = new JsonObject();
         Compare cp = new Compare();
-        String gameResult = cp.howMany(answer, gameAnswer).toString();
-    return gameResult;
+    return cp.howMany(answer, gameAnswer);
     }
 }
 
