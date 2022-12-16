@@ -3,15 +3,16 @@ package com.baseballgame.application;
 import com.baseballgame.domain.BaseBall;
 import com.baseballgame.domain.Game;
 import org.springframework.stereotype.Service;
+import com.baseballgame.domain.GameResult;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
+
 @Service
 
 public class GameService {
     private static String gameId;
     private static String gameAnswer;
+    private List resultList= new ArrayList<>();
     public Game.GameStart setGameId(){
         Map<String, Object> gameId = new HashMap<>();
         Game.GameStart gameStart = new Game.GameStart();
@@ -19,7 +20,6 @@ public class GameService {
         gameStart.setGameId(create());
         gameStart.setSuccess(true);
 
-        gameId.put("success", gameStart.getSuccess());
         gameId.put("gameId", gameStart.getGameId());
 
         return gameStart;
@@ -63,11 +63,25 @@ public class GameService {
             }
         }
 
-
         bbResult.setStrike(strike);
         bbResult.setBall(ball);
         bbResult.setOut(out);
+        bbResult.setSuccess(true);
+
+        gameAnswerResult.put("strike", strike);
+        gameAnswerResult.put("ball", ball);
+        gameAnswerResult.put("out", out);
+
+        resultList.add(gameAnswerResult);
+
         return bbResult;
+    }
+
+
+    public <T> GameResult<T> gameResultList(){
+        GameResult<T> result = new GameResult<>();
+        result.setData(resultList);
+        return result;
     }
 
 }

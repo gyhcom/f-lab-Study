@@ -3,6 +3,7 @@ package com.baseballgame.presentation;
 import com.baseballgame.application.GameService;
 import com.baseballgame.domain.BaseBall;
 import com.baseballgame.domain.Game;
+import com.baseballgame.domain.GameResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -31,5 +34,14 @@ public class gameApi {
         return ResponseEntity.ok(baseBallResult);
 //        return ResponseEntity.ok().build();
     }
+
+    @PostMapping(value = "/game/{gameId}/history")
+    public GameResult<BaseBall.BaseBallResult> gameHistory() {
+        return gameService.gameResultList();
+    }
+
+
+
+
 
 }
