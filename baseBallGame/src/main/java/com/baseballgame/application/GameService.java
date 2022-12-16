@@ -1,9 +1,9 @@
 package com.baseballgame.application;
 
-import com.baseballgame.domain.BaseBall;
-import com.baseballgame.domain.Game;
+import com.baseballgame.domain.BaseBallDto;
+import com.baseballgame.domain.GameDto;
 import org.springframework.stereotype.Service;
-import com.baseballgame.domain.GameResult;
+import com.baseballgame.domain.GameResultDto;
 
 import java.util.*;
 
@@ -13,9 +13,9 @@ public class GameService {
     private static String gameId;
     private static String gameAnswer;
     private List resultList= new ArrayList<>();
-    public Game.GameStart setGameId(){
+    public GameResultDto setGameId(){
         Map<String, Object> gameId = new HashMap<>();
-        Game.GameStart gameStart = new Game.GameStart();
+        GameDto.GameStart gameStart = new GameDto.GameStart();
 
         gameStart.setGameId(create());
         gameStart.setSuccess(true);
@@ -41,10 +41,9 @@ public class GameService {
         return resultNum;
     }
 
-    public BaseBall.BaseBallResult answerCompare(int userAnswer){
-        System.out.println("userAnswer: " + userAnswer + " gameId: " + gameId + " gameAnswer :" + gameAnswer);
+    public BaseBallDto.BaseBallResult answerCompare(int userAnswer){
         Map<String, Object> gameAnswerResult = new HashMap<>();
-        BaseBall.BaseBallResult bbResult = new BaseBall.BaseBallResult();
+        BaseBallDto.BaseBallResult bbResult = new BaseBallDto.BaseBallResult();
         String answer = String.valueOf(userAnswer);
 
         int strike = 0;
@@ -77,9 +76,8 @@ public class GameService {
         return bbResult;
     }
 
-
-    public <T> GameResult<T> gameResultList(){
-        GameResult<T> result = new GameResult<>();
+    public <T> GameResultDto<T> gameResultList(){
+        GameResultDto<T> result = new GameResultDto<>();
         result.setData(resultList);
         return result;
     }
