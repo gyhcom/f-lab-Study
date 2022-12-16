@@ -1,16 +1,15 @@
 package com.baseballgame.domain;
 
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-public class BaseBall {
+public class BaseBallDto {
     @Getter
     @Setter
     @NoArgsConstructor
-    public static class BaseBallResult extends Game.GameStart {
+    public static class BaseBallResult extends GameDto.GameStart {
         private int strike;
         private int ball;
         private int out;

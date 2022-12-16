@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-public class Game {
+public class GameDto {
 
     @Getter
     @Setter
     @NoArgsConstructor
-    public static class GameStart extends GameResult{
+    public static class GameStart extends GameResultDto {
         private String gameId;
     }
 }
