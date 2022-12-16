@@ -9,12 +9,7 @@ public class Game {
     @Getter
     @Setter
     @NoArgsConstructor
-    public static class GameStart{
-        private Boolean success;
+    public static class GameStart extends GameResult{
         private String gameId;
-        private String gameAnswer;
-
     }
-
-
 }
